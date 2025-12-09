@@ -260,6 +260,24 @@ a {
   }
 }
 
+.status-badge {
+  white-space: nowrap;
+}
+
+/* Mobile – force it to appear on a new line */
+@media (max-width: 768px) {
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-badge {
+    display: block;
+    margin-top: 10px;
+  }
+}
+
 .gradient-text {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
