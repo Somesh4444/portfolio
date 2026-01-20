@@ -268,32 +268,6 @@
             </div>
           </article>
 
-          <article class="project-card" style="display:none;">
-            <div class="project-header">
-              <div>
-                <h4 class="project-title">Getrafic Digital Agency</h4>
-                <p class="project-description">
-                  Built and maintained a web platform using CodeIgniter 4, Bootstrap, and MySQL with API integrations.
-                </p>
-                <div class="project-tags">
-                  <span class="project-tag">CodeIgniter</span>
-                  <span class="project-tag">Bootstrap</span>
-                  <span class="project-tag">MySQL</span>
-                  <span class="project-tag">REST API</span>
-                </div>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank" class="project-link" aria-label="View live project"
-                  rel="noopener noreferrer" title="Visit Site">
-                  <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
           <article class="project-card">
             <div class="project-header">
               <div>
@@ -324,6 +298,38 @@
               </div>
             </div>
           </article>
+
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">Panthan Trust</h4>
+                <p class="project-description">
+                  Developed a dynamic web application for Panthan Trust using CodeIgniter, Bootstrap, and MySQL.
+                  The project features a clean MVC architecture, responsive layouts, efficient database interactions,
+                  and an intuitive interface to manage trust activities and content.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">CodeIgniter</span>
+                  <span class="project-tag">Bootstrap</span>
+                  <span class="project-tag">MySQL</span>
+                  <span class="project-tag">PHP</span>
+                </div>
+              </div>
+              <div class="project-links">
+                <a href="https://panthantrust.in/" class="project-link"
+                   aria-label="View live project"
+                   rel="noopener noreferrer"
+                   title="Visit Site"
+                   target="_blank">
+                  <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
 
           <article class="project-card">
             <div class="project-header">
@@ -387,7 +393,36 @@
             </div>
           </article>
 
-
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">Aarshi Learning</h4>
+                <p class="project-description">
+                  Built a feature-rich educational platform using CodeIgniter 3, Bootstrap, and MySQL. The project
+                  emphasizes a responsive user interface, clean backend logic, and smooth content delivery to support
+                  learning and engagement.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">CodeIgniter 3</span>
+                  <span class="project-tag">Bootstrap</span>
+                  <span class="project-tag">MySQL</span>
+                  <span class="project-tag">PHP</span>
+                </div>
+              </div>
+              <div class="project-links">
+                <a href="https://aarshilearning.com/" class="project-link"
+                   aria-label="View live project"
+                   rel="noopener noreferrer"
+                   title="Visit Site"
+                   target="_blank">
+                  <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
 
           <article class="project-card">
             <div class="project-header">
@@ -421,6 +456,35 @@
               </div>
             </div>
           </article>
+
+          <style>
+            .load-more-wrapper {
+                text-align: center;
+                margin-top: 2rem;
+              }
+              
+              .load-more-btn {
+                padding: 12px 28px;
+                font-size: 15px;
+                border-radius: 6px;
+                border: none;
+                cursor: pointer;
+                background-color: #222;
+                color: #fff;
+                transition: all 0.3s ease;
+              }
+              
+              .load-more-btn:hover {
+                background-color: #000;
+              }
+          </style>
+
+          <div class="load-more-wrapper">
+            <button id="loadMoreProjects" class="load-more-btn">
+              Load More Projects
+            </button>
+          </div>
+          
         </div>
       </div>
     </section>
@@ -608,8 +672,41 @@
 
   typeEffect();
 </script>
-  <script src="https://getrafic.online/adv_analytics_api/track.js"></script>
-  <script src="https://getrafic.online/adv_analytics_api/track_time.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const projects = document.querySelectorAll(".project-card");
+    const loadMoreBtn = document.getElementById("loadMoreProjects");
+
+    let visibleCount = 4;
+
+    // Hide all projects after first 4
+    projects.forEach((project, index) => {
+      if (index >= visibleCount) {
+        project.style.display = "none";
+      }
+    });
+
+    loadMoreBtn.addEventListener("click", function () {
+      let shown = 0;
+
+      projects.forEach((project) => {
+        if (project.style.display === "none" && shown < 4) {
+          project.style.display = "block";
+          shown++;
+        }
+      });
+
+      // Hide button if all projects are visible
+      const hiddenProjects = Array.from(projects).filter(
+        project => project.style.display === "none"
+      );
+
+      if (hiddenProjects.length === 0) {
+        loadMoreBtn.style.display = "none";
+      }
+    });
+  });
+</script>
 
 </body>
 
